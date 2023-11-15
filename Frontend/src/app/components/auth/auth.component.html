@@ -1,0 +1,242 @@
+<div class="container">
+  <div *ngIf="isLoginForm" class="page">
+    <div class="page__form">
+      <div class="page__form--text">
+        <span>Zaloguj się</span>
+      </div>
+      <div class="page__form--style">
+        <form [formGroup]="loginForm" class="page__form--width">
+          <div class="field-width">
+            <label for="login" class="page__form--label"
+              >Podaj nazwę użytkownika</label
+            >
+            <br />
+            <input
+              type="text"
+              id="login"
+              formControlName="login"
+              class="input-style"
+            />
+            <div
+              class="validator"
+              *ngIf="
+                this.loginForm.get('login')?.invalid &&
+                this.loginForm.get('login')?.touched
+              "
+            >
+              <span
+                *ngIf="this.loginForm.get('login')?.hasError('required')"
+                class="validator--color"
+                >To pole nie może być puste</span
+              >
+            </div>
+          </div>
+          <div class="field-width">
+            <label for="password" class="page__form--label">Podaj hasło</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="input-style"
+            />
+            <div
+              class="validator"
+              *ngIf="
+                this.loginForm.get('password')?.invalid &&
+                this.loginForm.get('password')?.touched
+              "
+            >
+              <span
+                *ngIf="this.loginForm.get('password')?.hasError('required')"
+                class="validator--color"
+                >To pole nie może być puste</span
+              >
+            </div>
+          </div>
+          <div class="page__form--margin">
+            <button class="register-btn" (click)="this.send()">
+              Zaloguj się
+            </button>
+            <button class="clear-btn" (click)="this.changeTypeOfForm()">
+              Zarejstruj się
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" *ngIf="isRegisterForm">
+    <div class="page__form">
+      <span class="page--text">Zarejestruj się</span>
+      <form [formGroup]="this.registerForm">
+        <div class="page__form--flex page__form--margin">
+          <div class="page__form--half-width">
+            <label for="name" class="page__form--label">Podaj imię</label><br />
+            <input
+              type="text"
+              id="name"
+              class="input-style"
+              formControlName="name"
+            /><br />
+            <div
+              class="validator"
+              *ngIf="
+                this.registerForm.get('name')?.invalid &&
+                this.registerForm.get('name')?.touched
+              "
+            >
+              <span class="validator--color">To pole nie może być puste</span>
+            </div>
+          </div>
+          <div class="page__form--half-width">
+            <label for="surname" class="page__form--label">Podaj nazwisko</label
+            ><br />
+            <input
+              type="text"
+              id="surname"
+              class="input-style"
+              formControlName="surname"
+            />
+            <div
+              class="validator"
+              *ngIf="
+                this.registerForm.get('surname')?.invalid &&
+                this.registerForm.get('surname')?.touched
+              "
+            >
+              <span class="validator--color">To pole nie może być puste</span>
+            </div>
+          </div>
+        </div>
+        <div class="page__form--margin">
+          <label class="page__form--label" for="login"
+            >Podaj nazwę użytkownika</label
+          ><br />
+          <input
+            type="text"
+            class="input-style"
+            id="login"
+            formControlName="login"
+          />
+          <div
+            class="validator"
+            *ngIf="
+              this.registerForm.get('login')?.invalid &&
+              this.registerForm.get('login')?.touched
+            "
+          >
+            <span class="validator--color">To pole nie może być puste</span>
+          </div>
+        </div>
+        <div class="page__form--margin">
+          <label class="page__form--label" for="email">Podaj e-mail</label
+          ><br />
+          <input
+            type="text"
+            class="input-style"
+            id="email"
+            formControlName="email"
+          />
+          <div
+            class="validator"
+            *ngIf="
+              this.registerForm.get('email')?.invalid &&
+              this.registerForm.get('email')?.touched
+            "
+          >
+            <span
+              *ngIf="this.registerForm.get('email')?.hasError('required')"
+              class="validator--color"
+              >To pole nie może być puste</span
+            >
+            <span
+              *ngIf="this.registerForm.get('email')?.hasError('pattern')"
+              class="validator--color"
+              >Podany adres e-mail jest nieprawidłowy</span
+            >
+          </div>
+        </div>
+        <div class="page__form--flex page__form--margin">
+          <div class="page__form--half-width">
+            <label class="page__form--label" for="password">Podaj hasło</label
+            ><br />
+            <input
+              type="password"
+              class="input-style"
+              id="password"
+              formControlName="password"
+            />
+            <div
+              class="validator"
+              *ngIf="
+                this.registerForm.get('password')?.invalid &&
+                this.registerForm.get('password')?.touched
+              "
+            >
+              <span
+                *ngIf="this.registerForm.get('password')?.hasError('required')"
+                class="validator--color"
+                >To pole nie może być puste</span
+              >
+              <span
+                *ngIf="this.registerForm.get('password')?.hasError('pattern')"
+                class="validator--color"
+                >Podane hasło musi zawierać minimum 8 znaków, jedną dużą literę,
+                jedną małą literę, jedną liczbę i jeden znak specjalny</span
+              >
+            </div>
+          </div>
+          <div class="page__form--half-width">
+            <label class="page__form--label" for="repeatPassword"
+              >Powtórz hasło</label
+            ><br />
+            <input
+              type="password"
+              class="input-style"
+              id="repeatPassword"
+              formControlName="repeatPassword"
+            />
+            <div
+              class="validator"
+              *ngIf="
+                this.registerForm.get('repeatPassword')?.invalid &&
+                this.registerForm.get('repeatPassword')?.touched
+              "
+            >
+              <span
+                *ngIf="
+                  this.registerForm.get('repeatPassword')?.hasError('required')
+                "
+                class="validator--color"
+                >To pole nie może być puste</span
+              >
+              <span
+                *ngIf="
+                  this.registerForm.get('repeatPassword')?.hasError('pattern')
+                "
+                class="validator--color"
+                >Podane hasło musi zawierać minimum 8 znaków, jedną dużą literę,
+                jedną małą literę, jedną liczbę i jeden znak specjalny</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page__form--margin">
+          <button
+            class="register-btn"
+            [disabled]="!this.registerForm.valid"
+            (click)="send()"
+          >
+            Zarejestruj się
+          </button>
+          <button class="clear-btn" (click)="clear()">Wyczyść</button>
+          <button class="clear-btn" (click)="changeTypeOfForm()">
+            Zaloguj sie
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
