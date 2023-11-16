@@ -1,8 +1,9 @@
 import businessContainer from "../business/business.container";
 import applicationException from "../service/applicationException";
+import auth from "../middleware/auth";
 
 const eventEndpoint = (router) => {
-  router.post("/api/event/create", async (request, response, next) => {
+  router.post("/api/event/create", auth, async (request, response, next) => {
     try {
       const result = await businessContainer
         .getEventManager(request)
@@ -15,7 +16,7 @@ const eventEndpoint = (router) => {
 
   router.delete(
     "/api/event/remove/:eventId",
-    async (request, response, next) => {
+    auth, async (request, response, next) => {
       try {
         let result = await businessContainer
           .getEventManager(request)
@@ -29,7 +30,7 @@ const eventEndpoint = (router) => {
 
   router.get(
     "/api/event/getAllEventsForUserId/:userId",
-    async (request, response, next) => {
+      auth, async (request, response, next) => {
       try {
         const result = await businessContainer
           .getEventManager()
@@ -41,7 +42,7 @@ const eventEndpoint = (router) => {
     }
   );
 
-  router.get("/api/event/get/:eventId", async (request, response, next) => {
+  router.get("/api/event/get/:eventId",auth,  async (request, response, next) => {
     try {
       const result = await businessContainer
         .getEventManager()
