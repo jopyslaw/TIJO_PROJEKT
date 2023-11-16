@@ -19,8 +19,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import {FullCalendarModule} from "@fullcalendar/angular";
+import { EventDetailsComponent } from './components/event-details/event-details.component';
 @NgModule({
-  declarations: [AppComponent, AuthComponent, NavbarComponent, FooterComponent, SchedulerComponent, DialogComponent],
+  declarations: [AppComponent, AuthComponent, NavbarComponent, FooterComponent, SchedulerComponent, DialogComponent, EventDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
