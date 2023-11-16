@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Dodaj nowe wydarzenie</h2>
+
+<mat-dialog-content [formGroup]="addForm">
+  <mat-form-field>
+    <input matInput placeholder="Tytuł wydarzenia" formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Favorite Food</mat-label>
+    <mat-select formControlName="category" name="food">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Opis wydarzenia"
+      formControlName="description"
+    />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button mat-primary (click)="save()">Save</button>
+</mat-dialog-actions>

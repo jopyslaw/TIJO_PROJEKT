@@ -1,0 +1,6 @@
+export enum CategoryEnum {
+  ENTERTAINMENT = 'ENTERTAINMENT',
+  MEETING = 'MEETING',
+  MEDICAL_VISIT = 'MEDIAL VISIT',
+  VISITS = 'VISIT',
+}
