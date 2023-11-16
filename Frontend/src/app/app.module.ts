@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { SchedulerComponent } from './components/scheduler/scheduler.component';
@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import {FullCalendarModule} from "@fullcalendar/angular";
+import {TokenInterceptor} from "./interceptors/token/token.interceptor";
 @NgModule({
   declarations: [AppComponent, AuthComponent, NavbarComponent, FooterComponent, SchedulerComponent, DialogComponent],
   imports: [
@@ -34,7 +35,11 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     MatSelectModule,
     FullCalendarModule,
   ],
-  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
+  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false }},{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+   },
   ],
   bootstrap: [AppComponent],
 })
