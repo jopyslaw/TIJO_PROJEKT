@@ -1,5 +1,6 @@
 import businessContainer from "../business/business.container";
 import applicationException from "../service/applicationException";
+import auth from "../middleware/auth";
 
 const userEndpoint = (router) => {
   router.post("/api/user/auth", async (request, response, next) => {
@@ -26,7 +27,7 @@ const userEndpoint = (router) => {
 
   router.delete(
     "/api/user/logout/:userId",
-    async (request, response, next) => {
+      auth, async (request, response, next) => {
       try {
         let result = await businessContainer
           .getUserManager(request)
