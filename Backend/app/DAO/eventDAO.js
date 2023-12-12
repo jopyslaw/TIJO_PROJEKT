@@ -89,6 +89,6 @@ export default {
   getAllEventsForUser,
   getById,
 
-  categories,
+  category,
   model: EventModel,
 };
