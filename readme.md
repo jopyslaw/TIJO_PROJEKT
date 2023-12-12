@@ -4,7 +4,7 @@
 
 # Autor
 
-## Maciej Pichla , Konrad Jop 34290
+## Maciej Pichla 34317, Konrad Jop 34290
 
 # Temat projektu
 
