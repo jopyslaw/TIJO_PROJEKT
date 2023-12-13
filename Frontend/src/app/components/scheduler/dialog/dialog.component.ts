@@ -14,11 +14,11 @@ import { SchedulerModel } from '../scheduler-form.model';
 export class DialogComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   addForm!: FormGroup<SchedulerModel>;
-  categories: CategoryEnum[] = [
-    CategoryEnum.ENTERTAINMENT,
-    CategoryEnum.MEDICAL_VISIT,
-    CategoryEnum.MEETING,
-    CategoryEnum.VISITS,
+  categories: { name: string; value: CategoryEnum }[] = [
+    { name: 'Rozrywka', value: CategoryEnum.ENTERTAINMENT },
+    { name: 'Wizyta medyczna', value: CategoryEnum.MEDICAL_VISIT },
+    { name: 'Spotkanie', value: CategoryEnum.MEETING },
+    { name: 'Wizyta', value: CategoryEnum.VISITS },
   ];
 
   constructor(

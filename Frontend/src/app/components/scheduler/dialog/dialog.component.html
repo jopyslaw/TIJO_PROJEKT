@@ -6,11 +6,11 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Favorite Food</mat-label>
+    <mat-label>Kategoria wydarzenia</mat-label>
     <mat-select formControlName="category" name="food">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{ category }}
+      <mat-option>Brak</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.value">
+        {{ category.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -25,6 +25,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button (click)="close()">Close</button>
-  <button mat-raised-button mat-primary (click)="save()">Save</button>
+  <button mat-raised-button (click)="close()">Zamknij</button>
+  <button mat-raised-button mat-primary (click)="save()">Zapisz</button>
 </mat-dialog-actions>

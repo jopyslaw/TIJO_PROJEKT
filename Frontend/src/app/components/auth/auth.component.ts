@@ -78,6 +78,7 @@ export class AuthComponent {
         .pipe(takeUntil(this.destroy$))
         .subscribe((response) => {
           this.token.setToken(response.token);
+          this.token.isLogged.next(true);
           this.router.navigateByUrl('scheduler');
         });
       return;
